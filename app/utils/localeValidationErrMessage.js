@@ -4,6 +4,7 @@ export default {
     },
     string: {
         min: '${path} harus memiliki lebih dari ${min} huruf',
-        max: '${path} tidak boleh lebih dari ${max} huruf'
+        max: '${path} tidak boleh lebih dari ${max} huruf',
+        email: 'Kolom ${path} harus berisi valid email'
     }
 }
