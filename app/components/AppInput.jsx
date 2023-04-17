@@ -7,8 +7,9 @@ import ErrorMessage from './ErrorMessage';
 
 export default function AppInput({
     error, 
-    placeholder, 
-    value, 
+    placeholder,
+    value,
+    touched,
     ...otherProps}
 ) {
     const [isFocus, setIsFocus] = useState(false);
@@ -20,7 +21,7 @@ export default function AppInput({
         else if (value)
             placeholderStyle.push(styles.placeholderOnBorder)
 
-        if (error)
+        if (error && touched)
             placeholderStyle.push({color: colors.danger})
 
         return placeholderStyle
@@ -29,7 +30,7 @@ export default function AppInput({
     const getInputStyle = () => {
         const inputStyle = [styles.input];
         if (isFocus) inputStyle.push(styles.inputFocus);
-        if (error) inputStyle.push({borderColor: colors.danger});
+        if (error && touched) inputStyle.push({borderColor: colors.danger});
 
         return inputStyle;
     }
@@ -49,7 +50,7 @@ export default function AppInput({
                     {placeholder}
                 </Text>
             </View>
-            <ErrorMessage error={error} />
+            <ErrorMessage visible={touched} error={error} />
         </View>
     );
 }
