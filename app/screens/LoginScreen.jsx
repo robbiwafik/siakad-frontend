@@ -37,15 +37,19 @@ export default function LoginScreen() {
                 <AppInput 
                     autoCapitalize={'none'}
                     error={formik.errors['username']}
+                    onBlur={() => formik.setFieldTouched('username')}
                     onChangeText={formik.handleChange('username')} 
                     placeholder={'Username'} 
+                    touched={formik.touched.username}
                     value={formik.values.username} 
                 />                
                 <AppInput 
                     error={formik.errors['password']} 
+                    onBlur={() => setFieldTouched('password')}
                     onChangeText={formik.handleChange('password')}
                     placeholder={'Password'} 
                     secureTextEntry={true}
+                    touched={formik.touched.password}
                     value={formik.values.password} 
                 />
                 <AppButton 

@@ -28,7 +28,7 @@ const validationSchema = Yup.object().shape({
 Yup.setLocale(localeValidationErrorMessage);
 
 export default function EditAccountMahasiswaScreen() {
-    const { errors, values, handleSubmit, handleChange } = useFormik({
+    const { errors, values, handleSubmit, handleChange, setFieldTouched, touched } = useFormik({
         initialValues: {
             first_name: '',
             last_name: '',
@@ -51,12 +51,16 @@ export default function EditAccountMahasiswaScreen() {
                     onChangeText={handleChange('first_name')}
                     placeholder={'Nama depan'} 
                     value={values.first_name}
+                    onBlur={() => setFieldTouched('first_name')}
+                    touched={touched.first_name}
                 />
                 <AppInput 
                     error={errors.last_name} 
                     onChangeText={handleChange('last_name')}
                     placeholder={'Nama belakang'} 
                     value={values.last_name} 
+                    onBlur={() => setFieldTouched('last_name')}
+                    touched={touched.last_name}
                 />
                 <AppInput 
                     error={errors.alamat} 
@@ -65,6 +69,8 @@ export default function EditAccountMahasiswaScreen() {
                     onChangeText={handleChange('alamat')} 
                     placeholder={'Alamat'} 
                     value={values.alamat}
+                    onBlur={() => setFieldTouched('alamat')}
+                    touched={touched.alamat}
                 />
                 <AppInput 
                     autoCapitalize={'none'}
@@ -73,6 +79,8 @@ export default function EditAccountMahasiswaScreen() {
                     onChangeText={handleChange('email')} 
                     placeholder={'Email'} 
                     value={values.email}
+                    onblur={() => setFieldTouched('email')}
+                    touched={touched.email}
                 />
                 <AppInput 
                     autoCapitalize={'none'}
@@ -80,6 +88,8 @@ export default function EditAccountMahasiswaScreen() {
                     onChangeText={handleChange('username')} 
                     placeholder={'Username'} 
                     value={values.username}
+                    onBlur={() => setFieldTouched('username')}
+                    touched={touched.username}
                 />
                 <AppInput 
                     error={errors.no_hp} 
@@ -87,6 +97,8 @@ export default function EditAccountMahasiswaScreen() {
                     onChangeText={handleChange('no_hp')} 
                     placeholder={'No hp'} 
                     value={values.no_hp} 
+                    onBlur={() => setFieldTouched('no_hp')}
+                    touched={touched.no_hp}
                 />
                 <AppInput 
                     error={errors.tanggal_lahir} 
@@ -94,6 +106,8 @@ export default function EditAccountMahasiswaScreen() {
                     placeholder={'Tanggal lahir (YYYY-MM-DD)'} 
                     value={values.tanggal_lahir}
                     keyboardType={'numeric'}
+                    onBlur={() => setFieldTouched('tanggal_lahir')}
+                    touched={touched.tanggal_lahir}
                 />
                 <AppButton 
                     onPress={handleSubmit} 
