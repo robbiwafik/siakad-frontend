@@ -6,7 +6,7 @@ import colors from '../assets/colors';
 import defaultStyles from '../assets/defaultStyles';
 import { useState } from 'react';
 
-export default function AppImageCamInput({ onTakeImage }) {
+export default function AppImageCamInput({ onTakeImage, onDeleteImage }) {
     const [imageUri, setImageUri] = useState();
 
     const deleteImage = () => {
@@ -14,6 +14,8 @@ export default function AppImageCamInput({ onTakeImage }) {
             {text: 'Ya', onPress: () => setImageUri(null)},
             {text: 'Tidak'}
         ])
+
+        onDeleteImage();
     }
 
     const takeImage = async () => {
