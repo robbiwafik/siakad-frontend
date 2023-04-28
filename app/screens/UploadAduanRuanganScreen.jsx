@@ -1,10 +1,11 @@
-import { Platform, SafeAreaView, ScrollView, StatusBar, StyleSheet } from 'react-native';
 import { useFormik } from 'formik';
+import { ScrollView, StyleSheet } from 'react-native';
 import * as Yup from 'yup';
 
-import AppInput from '../components/AppInput';
-import AppImageCamInput from '../components/AppImageCamInput';
 import AppButton from '../components/AppButton';
+import AppImageCamInput from '../components/AppImageCamInput';
+import AppInput from '../components/AppInput';
+import Screen from '../components/Screen';
 import localValidationErrorMessage from '../utils/localeValidationErrMessage';
 
 const validationSchema = Yup.object().shape({
@@ -34,7 +35,7 @@ export default function UploadAduanRuanganScreen() {
 
     return (
         <ScrollView>
-            <SafeAreaView style={styles.container}>
+            <Screen style={styles.container}>
                 <AppInput 
                     error={formik.errors.detail}
                     numberOfLines={6} 
@@ -53,7 +54,7 @@ export default function UploadAduanRuanganScreen() {
                     style={styles.button} 
                     title={'Kirim'} 
                 />
-            </SafeAreaView>
+            </Screen>
         </ScrollView>
     );
 }
@@ -63,7 +64,6 @@ const styles = StyleSheet.create({
         marginVertical: 20
     },
     container: {
-        paddingHorizontal: 30,
-        paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0
+        paddingHorizontal: 30
     }
 });

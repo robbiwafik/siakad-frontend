@@ -1,9 +1,10 @@
-import { Platform, SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, View } from 'react-native';
 import { useFormik } from 'formik';
+import { ScrollView, StyleSheet } from 'react-native';
 import * as Yup from 'yup';
 
 import AppButton from '../components/AppButton';
 import AppInput from '../components/AppInput';
+import Screen from '../components/Screen';
 import localeValidationErrorMessage from '../utils/localeValidationErrMessage';
 
 const validationSchema = Yup.object().shape({
@@ -45,7 +46,7 @@ export default function EditAccountMahasiswaScreen() {
 
     return (
         <ScrollView>
-            <SafeAreaView style={styles.container}>
+            <Screen style={styles.container}>
                 <AppInput 
                     error={errors.first_name} 
                     onChangeText={handleChange('first_name')}
@@ -114,20 +115,19 @@ export default function EditAccountMahasiswaScreen() {
                     style={styles.btn} 
                     title={'Simpan'} 
                 />
-            </SafeAreaView>
+            </Screen>
         </ScrollView>
     );
 }
 
 const styles = StyleSheet.create({
-    btn: {
-        marginVertical: 20
-    },
     container: {
         flex: 1,
         justifyContent: 'center',
-        marginTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
         paddingHorizontal: 30,
         paddingVertical: 15
+    },
+    btn: {
+        marginVertical: 20
     }
 });

@@ -1,9 +1,10 @@
-import { Platform, SafeAreaView, ScrollView, StatusBar, StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 
-import AppInput from '../components/AppInput';
 import AppButton from '../components/AppButton';
-import AppDocumentInput from '../components/AppDocumentInput';
 import AppCategoryInput from '../components/AppCategoryInput';
+import AppDocumentInput from '../components/AppDocumentInput';
+import AppInput from '../components/AppInput';
+import Screen from '../components/Screen';
 
 // This array should be fetched from the backend to avoid un-persistence data,
 // But the current backend version doesn't provide an API for this array,
@@ -24,11 +25,9 @@ const karyaIlmiahType = [
 ];
 
 export default function EditUploadKaryaIlmiahScreen() {
-
-    // TODO: Refactor the SafeAreaView component
     return (
         <ScrollView>
-            <SafeAreaView style={styles.container}>
+            <Screen style={styles.container}>
                 <AppInput placeholder={'Judul'} />
                 <AppInput placeholder={'Abstrak'} />
                 <AppInput placeholder={'Link versi full'} />
@@ -39,14 +38,13 @@ export default function EditUploadKaryaIlmiahScreen() {
                 />
                 <AppDocumentInput /> 
                 <AppButton style={styles.btn} title={'Kirim'} />
-            </SafeAreaView>
+            </Screen>
         </ScrollView>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        paddingTop: Platform.OS == 'android' ? StatusBar.currentHeight : 0,
         paddingHorizontal: 30
     },
     btn: {
