@@ -1,13 +1,14 @@
+import { Entypo } from '@expo/vector-icons';
 import { useState } from 'react';
 import { Modal, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
-import { Entypo } from '@expo/vector-icons';
 
 import colors from '../assets/colors';
 import defaultStyles from '../assets/defaultStyles';
+import ErrorMessage from './ErrorMessage';
 import ModalCloseBtn from './ModalCloseBtn';
 import ModalOption from './ModalOption';
 
-export default function AppCategoryInput({ label, onSelect, categories=[] }) {
+export default function AppCategoryInput({ label, onSelect, categories=[], error }) {
     const [ modalVisible, setModalVisible ] = useState(false);
     const [ categoryLabel, setCategoryLabel ] = useState("");
 
@@ -36,10 +37,13 @@ export default function AppCategoryInput({ label, onSelect, categories=[] }) {
                         ))}
                     </View>
                 </Modal>
-                <View style={styles.toggler}>
-                    <Text style={styles.label}>{categoryLabel ? categoryLabel : label}</Text>
+                <View style={error ? [styles.toggler, styles.error] : styles.toggler}>
+                    <Text style={error ? [styles.label, styles.error] : styles.label}>
+                        {categoryLabel ? categoryLabel : label}
+                    </Text>
                     <Entypo name='chevron-thin-down' />            
                 </View>
+                <ErrorMessage error={error} visible={true} />
             </View>
         </TouchableWithoutFeedback>
     );
@@ -55,6 +59,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginBottom: 20,
         width: '100%'
+    },
+    error: {
+        borderColor: colors.danger,
+        color: colors.danger
     },
     label: {
         color: colors.dark,
