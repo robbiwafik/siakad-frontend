@@ -1,28 +1,20 @@
-import { StyleSheet, TextInput } from "react-native";
+import { useState } from "react";
 
-import colors from "../assets/colors";
-import defaultStyles from "../assets/defaultStyles";
+import AppInput from "./AppInput";
 
-export default function SearchBox({ placeholder, ...otherProps }) {
+export default function SearchBox({ onSearch }) {
+    const [ searchValue, setSearchValue ] = useState("");
+
+    const handleChange = (value) => {
+        setSearchValue(value);
+        onSearch(value);
+    }
+
     return (
-        <TextInput 
-            cursorColor={colors.dark} 
-            style={styles.input} 
-            placeholder={placeholder}
-            {...otherProps}
+        <AppInput 
+            onChangeText={handleChange} 
+            placeholder={'Cari'} 
+            value={searchValue} 
         />
     );
 }
-
-const styles = StyleSheet.create({
-    input: {
-        borderColor: colors.light,
-        borderRadius: defaultStyles.borderRadius,
-        borderWidth: defaultStyles.borderWidth,
-        color: colors.dark,
-        fontSize: defaultStyles.inputFontSize,
-        paddingHorizontal: 15,
-        paddingVertical: 10
-    }
-    
-});
