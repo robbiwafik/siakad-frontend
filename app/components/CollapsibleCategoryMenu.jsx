@@ -71,9 +71,9 @@ const styles = StyleSheet.create({
         width: '100%'
     },
     content: {
-        borderBottomWidth: 0.5,
-        borderColor: colors.dark,
-        borderTopWidth: 0.5
+        // borderBottomWidth: 0.5,
+        // borderColor: colors.dark,
+        // borderTopWidth: 0.5
     },
     title: {
         color: colors.dark,

@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     },
     wrapper: {
         alignItems: 'center',
-        backgroundColor: colors.white,
+        backgroundColor: '#f9f9f9',
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginVertical: 1,
