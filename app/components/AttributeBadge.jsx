@@ -1,18 +1,20 @@
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import colors from '../assets/colors';
+import defaultStyles from '../assets/defaultStyles';
 
 export default function AttributeBadge({ color=colors.primary, items }) {
     return (
         <View style={[styles.badge, { backgroundColor: color }]}>
             {items.map((item, index) => (
-                <>
-                    <View key={item.id} style={styles.attribute}>
+                <React.Fragment key={index}>
+                    <View style={styles.attribute}>
                         <Text style={styles.title}>{item.title}</Text>
                         <Text style={styles.subTitle}>{item.subTitle}</Text>
                     </View>
                     {index < items.length - 1 && <View style={styles.border} />}
-                </>
+                </React.Fragment>
             ))}
         </View>
     );
@@ -21,12 +23,11 @@ export default function AttributeBadge({ color=colors.primary, items }) {
 const styles = StyleSheet.create({
     badge: {
         alignSelf: 'center',
-        borderRadius: 20,
+        borderRadius: defaultStyles.borderRadius,
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginVertical: 20,
-        width: '100%',
-        width: '82%'
+        width: '90%'
     },
     attribute: {
         alignItems: 'center',
