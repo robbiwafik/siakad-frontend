@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
         borderRadius: 30,
         bottom: 30,
         height: 60,
+        width: 60,
         justifyContent: 'center'
     }
 });
