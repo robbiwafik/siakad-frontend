@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
         transform: [{rotate: '90deg'}]
     },
     container: {
-        marginVertical: 1,
+        marginBottom: 2,
         width: '100%'
     },
     collapsible: {
@@ -69,11 +69,6 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         padding: 20,
         width: '100%'
-    },
-    content: {
-        // borderBottomWidth: 0.5,
-        // borderColor: colors.dark,
-        // borderTopWidth: 0.5
     },
     title: {
         color: colors.dark,
